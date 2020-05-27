@@ -4,6 +4,7 @@ const Question = () => {
 
     // Define State
     const [ quantity, saveQuantity ] = useState(0);
+    const [ error, saveError ] = useState(false);
 
     // Reads budget
     const defineBudget = e => {
@@ -13,6 +14,16 @@ const Question = () => {
     // Submit budget
     const addBudget = e => {
         e.preventDefault();
+
+        // Validation
+        if (quantity < 1 || isNaN(quantity)) {
+            saveError(true);
+            return
+        }
+
+        // Validation passed
+        saveError(false);
+
     }
 
     return ( 
