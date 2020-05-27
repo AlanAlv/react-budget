@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Question from './componets/Question';
 import Form from './componets/Form';
+import List from './componets/List'
 
 function App() {
 
@@ -41,7 +42,9 @@ function App() {
                   />
                 </div>
                 <div className="one-half column">
-                  2
+                  <List 
+                    expenses={expenses}
+                  />
                 </div>
               </div>
             )
