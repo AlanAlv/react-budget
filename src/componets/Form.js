@@ -1,13 +1,36 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import Error from './Error';
 
 const Form = () => {
 
     const [name, saveName] = useState('');
     const [quantity, saveQuantity] = useState(0);
+    const [ error, saveError ] = useState(false);
+
+    // User adds expense
+    const addExpense = e => {
+        e.preventDefault();
+
+        // Validation
+        if (quantity < 1 || isNaN(quantity) || name.trim() === '') {
+            saveError(true);
+            return;
+        }
+        saveError(false);
+        // 
+    }
 
     return (
-        <form action="">
+        <form 
+            onSubmit={addExpense}
+        >
             <h2>Add Expenses here</h2>
+
+            {   error ? 
+                    <Error message="Both fields are required/Incorret Budget" />
+                :
+                    null
+            }
 
             <div className="field">
                 <label>Expense Name</label>
