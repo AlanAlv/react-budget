@@ -1,15 +1,32 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 const Question = () => {
+
+    // Define State
+    const [ quantity, saveQuantity ] = useState(0);
+
+    // Reads budget
+    const defineBudget = e => {
+        saveQuantity(parseInt(e.target.value, 10));
+    }
+
+    // Submit budget
+    const addBudget = e => {
+        e.preventDefault();
+    }
+
     return ( 
         <Fragment>
             <h2>Set your Budget</h2>
 
-            <form action="submit">
+            <form 
+                onSubmit={addBudget}
+            >
                 <input 
                     type="number" 
-                    classnName="u-full-width" 
-                    placeholder="Set your Budget"    
+                    className="u-full-width" 
+                    placeholder="Set your Budget"  
+                    onChange={defineBudget}  
                 />
 
                 <input 
