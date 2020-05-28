@@ -34,7 +34,6 @@ const Form = ({saveExpense, saveCreateExpense}) => {
         saveName('');
         saveQuantity(0);
 
-        console.log(expense);
     }
 
     return (
